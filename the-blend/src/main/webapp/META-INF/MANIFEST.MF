@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Class-Path: chemistry-opencmis-client-impl-0.8.0-SNAPSHOT.jar chemistr
+ y-opencmis-client-api-0.8.0-SNAPSHOT.jar chemistry-opencmis-commons-a
+ pi-0.8.0-SNAPSHOT.jar slf4j-api-1.6.6.jar chemistry-opencmis-commons-
+ impl-0.8.0-SNAPSHOT.jar stax-api-1.0-2.jar jaxws-rt-2.1.7.jar jaxws-a
+ pi-2.1.jar jaxb-api-2.1.jar activation-1.1.jar jaxb-impl-2.1.11.jar s
+ aaj-impl-1.3.3.jar saaj-api-1.3.jar streambuffer-0.9.jar stax-ex-1.2.
+ jar wstx-asl-3.2.3.jar junit-3.8.jar resolver-20050927.jar mimepull-1
+ .3.jar chemistry-opencmis-client-bindings-0.8.0-SNAPSHOT.jar org.osgi
+ .core-1.0.0.jar tika-parsers-1.2.jar tika-core-1.2.jar vorbis-java-ti
+ ka-0.1.jar vorbis-java-core-0.1-tests.jar netcdf-4.2-min.jar apache-m
+ ime4j-core-0.7.2.jar apache-mime4j-dom-0.7.2.jar commons-compress-1.4
+ .1.jar xz-1.0.jar commons-codec-1.5.jar pdfbox-1.7.0.jar fontbox-1.7.
+ 0.jar jempbox-1.7.0.jar commons-logging-1.1.1.jar bcmail-jdk15-1.45.j
+ ar bcprov-jdk15-1.45.jar poi-3.8.jar poi-scratchpad-3.8.jar poi-ooxml
+ -3.8.jar poi-ooxml-schemas-3.8.jar xmlbeans-2.3.0.jar dom4j-1.6.1.jar
+  geronimo-stax-api_1.0_spec-1.0.1.jar tagsoup-1.2.1.jar asm-3.1.jar i
+ soparser-1.0-RC-1.jar aspectjrt-1.6.11.jar metadata-extractor-2.4.0-b
+ eta-1.jar boilerpipe-1.1.0.jar rome-0.9.jar jdom-1.0.jar vorbis-java-
+ core-0.1.jar juniversalchardet-1.0.3.jar commons-fileupload-1.2.2.jar
+  commons-io-2.4.jar esapi-2.0GA.jar commons-configuration-1.5.jar com
+ mons-collections-3.2.jar commons-lang-2.3.jar commons-digester-1.8.ja
+ r commons-beanutils-1.7.0.jar commons-beanutils-core-1.7.0.jar log4j-
+ 1.2.16.jar xom-1.1.jar xmlParserAPIs-2.6.2.jar xercesImpl-2.6.2.jar x
+ alan-2.7.0.jar xml-apis-1.0.b2.jar jaxen-1.1-beta-8.jar bsh-core-2.0b
+ 4.jar antisamy-1.4.3.jar batik-css-1.7.jar batik-ext-1.7.jar batik-ut
+ il-1.7.jar xml-apis-ext-1.3.04.jar nekohtml-1.9.12.jar commons-httpcl
+ ient-3.1.jar
+

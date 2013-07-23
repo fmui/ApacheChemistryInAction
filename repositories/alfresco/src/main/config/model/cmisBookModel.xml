@@ -1,0 +1,855 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="cmisbook:cmisBookModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+    <description>CMIS Book Model</description>
+    <author>Florian Mueller, Jay Brown, Jeff Potts</author>
+    <version>1.0</version>
+    <imports>
+        <import uri="http://www.alfresco.org/model/dictionary/1.0"
+            prefix="d" />
+        <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+    </imports>
+    <namespaces>
+        <namespace uri="http://www.manning.com/cmis-book/model/content/1.0" prefix="cmisbook" />
+    </namespaces>
+    <types>
+        <type name="cmisbook:taggable">
+            <title>Taggable</title>
+			<description>Taggable document</description>
+            <parent>cm:content</parent>
+            <properties>
+            	<property name="cmisbook:tags">
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            		<multiple>true</multiple>
+            	</property>
+            </properties>
+        </type>
+        <type name="cmisbook:image">
+            <title>Image</title>
+			<description>Image</description>
+            <parent>cmisbook:taggable</parent>
+            <properties>
+            	<property name="cmisbook:imageWidth">
+					<title>Image Width</title>
+            		<description>Image Width</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:imageHeight">
+					<title>Image Height</title>
+            		<description>Image Height</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:bitsPerSample">
+					<title>Bits Per Sample</title>
+            		<description>Bits Per Sample</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:compression">
+					<title>Compression Format</title>
+            		<description>Compression Format</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:photometricInterpretation">
+					<title>Color Format</title>
+            		<description>Color Format</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:imageDescription">
+					<title>Image Description</title>
+					<description>Image Description</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:make">
+					<title>Camera Make</title>
+					<description>Camera Make</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:model">
+					<title>Model</title>
+					<description>Model</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:orientation">
+					<title>Orientation</title>
+					<description>Orientation</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:xResolution">
+					<title>X Resolution</title>
+					<description>X Resolution</description>
+            		<type>d:double</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:yResolution">
+					<title>Y Resolution</title>
+					<description>Y Resolution</description>
+            		<type>d:double</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:resolutionUnit">
+					<title>Resolution Unit</title>
+					<description>Resolution Unit</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:software">
+					<title>Software</title>
+					<description>Software</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:modifyTime">
+					<title>Modify Date</title>
+					<description>Modify Date</description>
+            		<type>d:datetime</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:imageArtist">
+					<title>Artist</title>
+					<description>Artist</description>
+            		<type>d:text</type>					
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:yCbCrPositioning">
+					<title>YCbCr Positioning</title>
+					<description>YCbCr Positioning</description>
+            		<type>d:int</type>					
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:copyright">
+					<title>Copyright Notice</title>
+					<description>Copyright Notice</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:exposureTime">
+					<title>Exposure Time</title>
+					<description>Exposure Time</description>
+            		<type>d:double</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:fNumber">
+					<title>F-Number</title>
+					<description>F-Number</description>
+            		<type>d:double</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:exposureProgram">
+					<title>Exposure Program</title>
+					<description>Exposure Program</description>
+            		<type>d:int</type>					
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:isoSpeed">
+					<title>ISO Speed</title>
+					<description>ISO Speed</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:gpsLatitude">
+					<title>GPS Latitude</title>
+					<description>GPS Latitude</description>
+            		<type>d:double</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:gpsLatitudeRef">
+					<title>GPS Latitude Ref</title>
+					<description>GPS Latitude Ref</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:gpsLongitude">
+					<title>GPS Longitude</title>
+					<description>GPS Longitude</description>
+            		<type>d:double</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:gpsLongitudeRef">
+					<title>GPS Longitude Ref</title>
+					<description>GPS Longitude Ref</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:gpsAltitude">
+					<title>GPS Altitude</title>
+					<description>GPS Altitude</description>
+            		<type>d:double</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:gpsAltitudeRef">
+					<title>GPS Altitude Ref</title>
+					<description>GPS Altitude Ref</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:selfTimerMode">
+					<title>Self Timer Mode</title>
+					<description>Self Timer Mode</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:timeZoneOffset">
+					<title>Time Zone Offset</title>
+					<description>Time Zone Offset</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:dateTimeOriginal">
+					<title>Date Time Original</title>
+					<description>Date Time Original</description>
+            		<type>d:datetime</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:createDate">
+					<title>date/time digitized</title>
+					<description>date/time digitized</description>
+            		<type>d:datetime</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:shutterSpeedValue">
+					<title>Shutter Speed Value</title>
+					<description>Shutter Speed Value</description>
+            		<type>d:double</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:apertureValue">
+					<title>Aperture Value</title>
+					<description>Aperture Value</description>
+            		<type>d:double</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:brightnessValue">
+					<title>Brightness Value</title>
+					<description>Brightness Value</description>
+            		<type>d:double</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:exposureCompensation">
+					<title>Exposure Compensation</title>
+					<description>Exposure Compensation</description>
+            		<type>d:double</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:maxApertureValue">
+					<title>Max Aperture Value</title>
+					<description>Max Aperture Value</description>
+            		<type>d:double</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:meteringMode">
+					<title>Metering Mode</title>
+					<description>Metering Mode</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:subjectDistance">
+					<title>Subject Distance</title>
+					<description>Subject Distance</description>
+            		<type>d:double</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:lightSource">
+					<title>Light Source</title>
+					<description>Light Source</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:flash">
+					<title>Flash</title>
+					<description>Flash</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:focalLength">
+					<title>Focal Length</title>
+					<description>Focal Length</description>
+            		<type>d:double</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:userComment">
+					<title>User Comment</title>
+					<description>User Comment</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:colorSpace">
+					<title>Color Space</title>
+					<description>Color Space</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:pixelXDimension">
+					<title>PixelXDimension</title>
+					<description>PixelXDimension</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:pixelYDimension">
+					<title>PixelYDimension</title>
+					<description>PixelYDimension</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:exposureMode">
+					<title>Color Space</title>
+					<description>Color Space</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:whiteBalance">
+					<title>White Balance</title>
+					<description>White Balance</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:sceneCaptureType">
+					<title>Scene Capture Type</title>
+					<description>Scene Capture Type</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:ownerName">
+					<title>Owner Name</title>
+					<description>Owner Name</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:serialNumber">
+					<title>Serial Number</title>
+					<description>Serial Number</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:rating">
+					<title>Rating</title>
+					<description>Rating</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:ratingPercent">
+					<title>Rating Percent</title>
+					<description>Rating Percent</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:dataPrecision">
+					<title>JPEG Data Precision</title>
+					<description>JPEG Data Precision</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            </properties>
+        </type>
+
+        <type name="cmisbook:media">
+            <title>Media</title>
+			<description>Media</description>
+            <parent>cmisbook:taggable</parent>
+            <properties>
+            	<property name="cmisbook:sourceURL">
+					<title>Source URL</title>
+					<description>Source URL</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:license">
+					<title>License</title>
+					<description>License</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:year">
+					<title>Year</title>
+					<description>Year</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:artwork">
+					<title>Artwork</title>
+					<description>Artwork</description>
+            		<type>d:noderef</type>
+            		<mandatory>false</mandatory>
+            	</property>
+        	</properties>
+        </type>
+        <type name="cmisbook:audio">
+            <title>Audio File</title>
+			<description>Audio Content (compressed or uncompressed)</description>
+            <parent>cmisbook:media</parent>
+            <properties>
+            	<property name="cmisbook:artist">
+					<title>Artist</title>
+					<description>Artist</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:album">
+					<title>Album</title>
+					<description>Album</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:title">
+					<title>Title</title>
+					<description>Title</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:comment">
+					<title>Comment</title>
+					<description>Comment</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:genre">
+					<title>Genre</title>
+					<description>Genre</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:length">
+					<title>Length in seconds</title>
+					<description>Length in seconds</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:track">
+					<title>Track in album</title>
+					<description>Track in album</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:composer">
+					<title>Composer</title>
+					<description>Composer</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:discNo">
+					<title>Disc Number</title>
+					<description>Disc Number</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:audioFormat">
+					<title>Audio Format</title>
+					<description>Audio Format / compression scheme</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:sampleRate">
+					<title>Sample Rate</title>
+					<description>Sample Rate</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:audioChannelType">
+					<title>Audio Channel Type</title>
+					<description>Audio Channel Type</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:noChannels">
+					<title>number of audio channels</title>
+					<description>number of audio channels</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:compressorVersion">
+					<title>Compressor Version</title>
+					<description>Compressor Version</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+        	</properties>
+        </type>
+        <type name="cmisbook:video">
+            <title>Video Content</title>
+			<description>Video Content</description>
+            <parent>cmisbook:media</parent>
+            <properties>
+            	<property name="cmisbook:videoWidth">
+					<title>Video Width</title>
+					<description>Video Width</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:videoHeight">
+					<title>Video Height</title>
+					<description>Video Height</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:hasVideo">
+					<title>Has Video</title>
+					<description>Has Video</description>
+            		<type>d:boolean</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:hasAudio">
+            		<title>Has Audio</title>
+					<description>Has Audio</description>
+            		<type>d:boolean</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:datasize">
+            		<title>Data Size</title>
+					<description>Data Size</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:videosize">
+					<title>Video Size</title>
+					<description>Video Size</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:audiosize">
+					<title>Audio Size</title>
+					<description>Audio Size</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:videoDuration">
+					<title>Video Duration</title>
+					<description>Video Duration</description>
+            		<type>d:double</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:videoFramerate">
+					<title>Video Framerate</title>
+					<description>Video Framerate</description>
+            		<type>d:double</type>
+            		<mandatory>false</mandatory>
+            	</property>
+        	</properties>
+        </type>
+        <type name="cmisbook:album">
+            <title>Album</title>
+			<description>Album</description>
+            <parent>cmisbook:media</parent>
+            <properties>
+            	<property name="cmisbook:tracks">
+					<title>Tracks</title>
+					<description>Tracks</description>
+            		<type>d:noderef</type>
+            		<mandatory>false</mandatory>
+					<multiple>true</multiple>
+            	</property>
+            </properties>
+        </type>
+        <type name="cmisbook:pdf">
+            <title>PDF Document</title>
+			<description>PDF Document</description>
+            <parent>cm:content</parent>
+            <properties>
+            	<property name="cmisbook:noPages">
+            		<title>Number of pages</title>
+					<description>Number of pages in document</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:pdfTitle">
+					<title>Title</title>
+					<description>Title document</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:pdfAuthor">
+					<title>Author</title>
+					<description>Author</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:creator">
+					<title>Creator</title>
+					<description>Creator</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:pdfKeywords">
+					<title>Keywords</title>
+					<description>Keywords</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+					<multiple>true</multiple>
+            	</property>
+            	<property name="cmisbook:producer">
+            		<title>Producer</title>
+					<description>Producer</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:subject">
+					<title>Producer</title>
+					<description>Producer</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:createdDate">
+					<title>Date Created</title>
+					<description>Date Created</description>
+            		<type>d:datetime</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:modifiedDate">
+            		<title>Date Modified</title>
+					<description>Date Modified</description>
+            		<type>d:datetime</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:trapped">
+            		<title>Trapped</title>
+					<description>Trapped</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            </properties>
+        </type>
+        <type name="cmisbook:officeDocument">
+            <title>Office Document</title>
+			<description>Document of type Office</description>
+            <parent>cm:content</parent>
+            <properties>
+            	<property name="cmisbook:applicationName">
+            		<title>Application Name</title>
+					<description>Application Name</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:applicationVersion">
+            		<title>Application Version</title>
+					<description>Application Version</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:docAuthor">
+            		<title>Author</title>
+					<description>Author</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:category">
+            		<title>Category</title>
+					<description>Category</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:contentStatus">
+            		<title>Content Status</title>
+					<description>Content Status</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:comments">
+            		<title>Comments</title>
+					<description>Comments</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:company">
+            		<title>Company</title>
+					<description>Company</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:keywords">
+					<title>Keywords</title>
+					<description>Keywords</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+					<multiple>true</multiple>
+            	</property>
+            	<property name="cmisbook:lastAuthor">
+            		<title>Last Author</title>
+					<description>Last Author</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:manager">
+            		<title>Manager</title>
+					<description>Manager</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:notes">
+            		<title>Notes</title>
+					<description>Notes</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:presentationFormat">
+            		<title>Presentation Format</title>
+					<description>Presentation Format</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:revisionNumber">
+            		<title>Revision Number</title>
+					<description>Revision Number</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:template">
+            		<title>Template</title>
+					<description>Template</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:version">
+            		<title>Version</title>
+					<description>Version</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:characterCount">
+            		<title>Character Count</title>
+					<description>Character Count</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:characterCountWithSpaces">
+            		<title>Character Count With Spaces</title>
+					<description>Character Count With Spaces</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:wordCount">
+            		<title>Word Count</title>
+					<description>Word Count</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:lineCount">
+            		<title>Line Count</title>
+					<description>Line Count</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:pageCount">
+					<title>Page Count</title>
+					<description>Page Count</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:slideCount">
+            		<title>Slide Count</title>
+					<description>Slide Count</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:paragraphCount">
+					<title>Paragraph Count</title>
+					<description>Paragraph Count</description>
+            		<type>d:int</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:totalTime">
+            		<title>Total Time</title>
+					<description>Total Time</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:editTime">
+            		<title>Edit Time</title>
+					<description>Edit Time</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:creationDate">
+            		<title>Creation Date</title>
+					<description>Creation Date</description>
+            		<type>d:datetime</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:lastSaveDate">
+            		<title>Last Save Date</title>
+					<description>Last Save Date</description>
+            		<type>d:datetime</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:lastPrinted">
+            		<title>Last Printed</title>
+					<description>Last Printed</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            </properties>
+        </type>
+        <type name="cmisbook:text">
+            <title>Text Document</title>
+			<description>Text Document</description>
+            <parent>cm:content</parent>
+            <properties>
+            	<property name="cmisbook:author">
+            		<title>Author</title>
+					<description>Author</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            </properties>
+        </type>
+        <type name="cmisbook:lyrics">
+            <title>Lyrics</title>
+			<description>Lyrics</description>
+            <parent>cmisbook:text</parent>
+            <properties>
+            	<property name="cmisbook:songtitle">
+            		<title>Song Title</title>
+					<description>Song Title</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            </properties>
+        </type>        
+        <type name="cmisbook:poem">
+            <title>Poem</title>
+			<description>Poem</description>
+            <parent>cmisbook:text</parent>
+            <properties>
+            	<property name="cmisbook:poemtitle">
+            		<title>Poem Title</title>
+					<description>Poem Title</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            </properties>
+        </type>
+        <type name="cmisbook:note">
+            <title>Note</title>
+			<description>Note</description>
+            <parent>cm:content</parent>
+            <properties>
+            	<property name="cmisbook:noteArchived">
+            		<title>Note Archived</title>
+					<description>Has this note been processed?</description>
+            		<type>d:boolean</type>
+            		<mandatory>false</mandatory>
+            	</property>
+            	<property name="cmisbook:noteReminders">
+            		<title>Note reminders</title>
+					<description>Note reminders</description>
+            		<type>d:datetime</type>
+            		<mandatory>false</mandatory>
+					<multiple>true</multiple>
+            	</property>
+            	<property name="cmisbook:noteLinks">
+            		<title>Note links</title>
+					<description>Links related to this note</description>
+            		<type>d:text</type>
+            		<mandatory>false</mandatory>
+					<multiple>true</multiple>
+            	</property>            	
+            </properties>
+        </type>                
+    </types>
+</model>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal" 
+	android:layout_height="fill_parent"
+	android:layout_width="fill_parent">
+	
+	<TextView android:id="@+id/propertyName" 
+		android:layout_height="wrap_content" 
+		android:textStyle="bold" 
+		android:layout_margin="2dip" 
+		android:layout_width="150dip"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		/>
+		
+	<TextView android:id="@+id/propertyValue" 
+		android:layout_height="wrap_content"
+		android:gravity="left" 
+		android:layout_margin="2dip" 
+		android:layout_width="0dip" 
+		android:layout_weight="1" 
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		/>
+</LinearLayout>

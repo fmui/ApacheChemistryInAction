@@ -1,0 +1,50 @@
+// <start id="ios-listing-05"/>
+- (void)uploadButtonPressed
+{
+    // Helper block to enable all buttons
+    void (^reenableButtonsBlock)() = ^()
+    {
+		... snip ...
+    };
+
+    void (^completionBlock)(NSString *objectId, NSError *error) =//<co id="listing-05-upload-completion"/>
+    ^(NSString *objectId, NSError *error)
+    {
+        if (nil == objectId)
+        {
+            self.messageLabel.text = @"Upload Failed";
+        }
+        else
+        {
+            self.messageLabel.text = @"Upload Success";
+        }
+        
+        reenableButtonsBlock();
+    };
+
+    // Disable and hide all buttons while upload is in progress
+	... snip ...
+
+    // Update the message to inform the user
+    // that an upload is in progress.
+    self.messageLabel.text = @"Upload in Progress...";
+
+    NSString *documentName =
+      [NSString stringWithFormat:@"audio-captured-%f.aac",//<co id="listing-05-generate-name"/>
+      [[NSDate date] timeIntervalSince1970]];
+
+    NSMutableDictionary *documentProperties =
+      [NSMutableDictionary dictionary];//<co id="listing-05-set-name"/>
+    [documentProperties setObject:documentName forKey:@"cmis:name"];
+    [documentProperties setObject:@"cmis:document"
+      forKey:@"cmis:objectTypeId"];
+
+    [self.cmisSession
+      createDocumentFromFilePath:self.capturedAudioFilePath //<co id="listing-05-create-document"/>
+      mimeType:@"audio/aac"
+      properties:documentProperties
+      inFolder:self.uploadFolderId
+      completionBlock:completionBlock
+      progressBlock:NULL];
+}
+// <end id="ios-listing-05"/>

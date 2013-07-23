@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/default_server"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:shrinkColumns="1"
+    android:stretchColumns="1"
+    android:layout_margin="5dip"
+    android:padding="5dip"  >
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_album_where" />
+
+        <EditText
+            android:id="@+id/parent_folder_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:text="@string/add_album_default_path" >
+        </EditText>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_album_name" />
+
+        <EditText
+            android:id="@+id/album_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/required"
+            android:inputType="text" >
+        </EditText>
+    </TableRow>
+
+</TableLayout>

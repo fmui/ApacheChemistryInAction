@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>OpenCMIS Browser Binding</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<link type="text/css" href="../js/jplayer/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" />
+
+	<script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>	
+    <script type="text/javascript" src="../js/jplayer/jquery.jplayer.min.js"></script>    
+    <script type="text/javascript" src="../js/jplayer/add-on/jplayer.playlist.min.js"></script>
+	<script src="cmis.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<h3>CMIS and Javascript</h3>
+    <h4> Get Children of folder: </h4>
+    <form >
+	  <fieldset>
+	    <legend>Enter a folder path containing music</legend>
+	    <input type="text" id="folderpathfield" value="?"/>
+	  </fieldset>
+	</form>
+	<p></p>
+    <button id="getchildren">Get children!</button>  <br/>
+	<p></p>
+    <div id="player">
+    </div>   
+</body>
+</html>

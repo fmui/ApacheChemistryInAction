@@ -1,0 +1,29 @@
+<?php
+/**
+ * @file
+ * Provides primary Drupal hook implementations.
+ *
+ * @author Jim Berry ("solotandem", http://drupal.org/user/240748)
+ */
+
+/**
+ * Implements hook_libraries_info().
+ */
+function cmis_library_libraries_info() {
+  $libraries['cmis-lib'] = array(
+    'title' => 'CMIS Library',
+ /*   'vendor url' => 'http://chemistry.apache.org',
+    'download url' => 'http://drupal.org/project/grammar_parser',
+    'version arguments' => array(
+      'file'    => 'CHANGELOG.txt',
+      'pattern' => '/pgp \(grammar parser\) (\d+\.x-\d+\.x)/',
+    ),*/
+    'files' => array(
+      'php' => array(
+        'cmis-lib.php',
+      ),
+    ),
+  );
+
+  return $libraries;
+}

@@ -1,0 +1,7 @@
+; $Id$
+name = cmis_library
+description = Wrapper around CMIS Library
+package = Apache Chemistry
+core = 7.x
+version = 7.x-1.0
+dependencies[] = libraries

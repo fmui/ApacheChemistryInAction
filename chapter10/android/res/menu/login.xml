@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_manning"
+        android:showAsAction="never"
+        android:title="@string/menu_manning"/>
+    <item
+        android:id="@+id/menu_chemistry"
+        android:showAsAction="never"
+        android:title="@string/menu_chemistry"/>
+    <item
+        android:id="@+id/menu_cmis_specification"
+        android:showAsAction="never"
+        android:title="@string/menu_cmis_specification"/>
+    <item
+        android:id="@+id/menu_cmis_chemistry"
+        android:showAsAction="never"
+        android:title="@string/menu_cmis_chemistry"/>
+    <item
+        android:id="@+id/menu_javadoc"
+        android:showAsAction="never"
+        android:title="@string/menu_javadoc"/>
+
+</menu>

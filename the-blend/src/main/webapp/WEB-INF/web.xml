@@ -1,0 +1,149 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<display-name>The Blend</display-name>
+
+	<listener>
+		<listener-class>org.apache.commons.fileupload.servlet.FileCleanerCleanup</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>IndexServlet</servlet-name>
+		<servlet-class>com.manning.cmis.theblend.servlets.IndexServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>IndexServlet</servlet-name>
+		<url-pattern>/index</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DashboardServlet</servlet-name>
+		<servlet-class>com.manning.cmis.theblend.servlets.DashboardServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DashboardServlet</servlet-name>
+		<url-pattern>/dashboard</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>BrowseServlet</servlet-name>
+		<servlet-class>com.manning.cmis.theblend.servlets.BrowseServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BrowseServlet</servlet-name>
+		<url-pattern>/browse</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ShowServlet</servlet-name>
+		<servlet-class>com.manning.cmis.theblend.servlets.ShowServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowServlet</servlet-name>
+		<url-pattern>/show</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AlbumServlet</servlet-name>
+		<servlet-class>com.manning.cmis.theblend.servlets.AlbumServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AlbumServlet</servlet-name>
+		<url-pattern>/album</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ArtworkServlet</servlet-name>
+		<servlet-class>com.manning.cmis.theblend.servlets.ArtworkServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ArtworkServlet</servlet-name>
+		<url-pattern>/artwork</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DownloadServlet</servlet-name>
+		<servlet-class>com.manning.cmis.theblend.servlets.DownloadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadServlet</servlet-name>
+		<url-pattern>/download</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>RenameServlet</servlet-name>
+		<servlet-class>com.manning.cmis.theblend.servlets.RenameServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RenameServlet</servlet-name>
+		<url-pattern>/rename</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DeleteServlet</servlet-name>
+		<servlet-class>com.manning.cmis.theblend.servlets.DeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteServlet</servlet-name>
+		<url-pattern>/delete</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MoveServlet</servlet-name>
+		<servlet-class>com.manning.cmis.theblend.servlets.MoveServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MoveServlet</servlet-name>
+		<url-pattern>/move</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AddServlet</servlet-name>
+		<servlet-class>com.manning.cmis.theblend.servlets.AddServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddServlet</servlet-name>
+		<url-pattern>/add</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AddVersionServlet</servlet-name>
+		<servlet-class>com.manning.cmis.theblend.servlets.AddVersionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddVersionServlet</servlet-name>
+		<url-pattern>/addversion</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SearchServlet</servlet-name>
+		<servlet-class>com.manning.cmis.theblend.servlets.SearchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchServlet</servlet-name>
+		<url-pattern>/search</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>TagsServlet</servlet-name>
+		<servlet-class>com.manning.cmis.theblend.servlets.TagsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TagsServlet</servlet-name>
+		<url-pattern>/tags</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>InstallServlet</servlet-name>
+		<servlet-class>com.manning.cmis.theblend.servlets.InstallServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InstallServlet</servlet-name>
+		<url-pattern>/install</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index</welcome-file>
+	</welcome-file-list>
+</web-app>

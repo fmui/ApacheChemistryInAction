@@ -1,0 +1,187 @@
+//<start id="ne-setup"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+   <S:Body>
+     <ns2:getObjectResponse 
+     xmlns="http://docs.oasis-open.org/ns/cmis/core/200908/" 
+     xmlns:ns2="http://docs.oasis-open.org/ns/cmis/messaging/200908/">
+         <ns2:object>  //<co id="obj-props-start-here" />
+            <properties>
+              <propertyBoolean 
+               queryName="cmis:isLatestMajorVersion" 
+               displayName="Is Latest Major Version" 
+               localName="cmis:isLatestMajorVersion" 
+               propertyDefinitionId="cmis:isLatestMajorVersion">
+                  <value>true</value>
+              </propertyBoolean>
+              <propertyInteger queryName="cmis:contentStreamLength" 
+               displayName="Content Length" 
+               localName="cmis:contentStreamLength" 
+               propertyDefinitionId="cmis:contentStreamLength">
+                  <value>395</value>
+              </propertyInteger>
+              <propertyString queryName="cmis:contentStreamId" 
+               displayName="Stream Id" localName="cmis:contentStreamId" 
+               propertyDefinitionId="cmis:contentStreamId"/>
+              <propertyId queryName="cmis:objectTypeId" 
+               displayName="Type-Id" localName="cmis:objectTypeId" 
+               propertyDefinitionId="cmis:objectTypeId">
+                  <value>cmisbook:text</value>
+              </propertyId>
+              <propertyString 
+               queryName="cmis:versionSeriesCheckedOutBy" 
+               displayName="Checked Out By" 
+               localName="cmis:versionSeriesCheckedOutBy" 
+               propertyDefinitionId="cmis:versionSeriesCheckedOutBy"/>
+              <propertyId queryName="cmis:versionSeriesCheckedOutId" 
+               displayName="Checked Out Id" 
+               localName="cmis:versionSeriesCheckedOutId" 
+               propertyDefinitionId="cmis:versionSeriesCheckedOutId"/>
+              <propertyString queryName="cmisbook:author" 
+               displayName="Author" localName="author" 
+               propertyDefinitionId="cmisbook:author"/>
+              <propertyString queryName="cmis:name" displayName="Name" 
+               localName="cmis:name" propertyDefinitionId="cmis:name">
+                  <value>welcome.txt</value>
+              </propertyString>
+              <propertyString queryName="cmis:contentStreamMimeType" 
+               displayName="Mime Type" 
+               localName="cmis:contentStreamMimeType" 
+               propertyDefinitionId="cmis:contentStreamMimeType">
+                  <value>text/plain</value>  //<co id="obj-props-mime-type" />
+              </propertyString>
+              <propertyId queryName="cmis:versionSeriesId" 
+               displayName="Version Series Id" 
+               localName="cmis:versionSeriesId" 
+               propertyDefinitionId="cmis:versionSeriesId">
+                  <value>162</value>
+              </propertyId>
+              <propertyDateTime queryName="cmis:creationDate" 
+               displayName="Creation Date" 
+               localName="cmis:creationDate" 
+               propertyDefinitionId="cmis:creationDate">
+                  <value>2012-11-17T19:21:04.169Z</value>
+              </propertyDateTime>
+              <propertyString queryName="cmis:changeToken" 
+               displayName="Change Token" 
+               localName="cmis:changeToken" 
+               propertyDefinitionId="cmis:changeToken">
+                  <value>1353180064169</value>
+              </propertyString>
+              <propertyString queryName="cmis:versionLabel" 
+               displayName="Version Label" 
+               localName="cmis:versionLabel" 
+               propertyDefinitionId="cmis:versionLabel">
+                  <value>V 1.0</value>
+              </propertyString>
+              <propertyBoolean queryName="cmis:isLatestVersion" 
+               displayName="Is Latest Version" 
+               localName="cmis:isLatestVersion" 
+               propertyDefinitionId="cmis:isLatestVersion">
+                  <value>true</value>
+              </propertyBoolean>
+              <propertyBoolean 
+               queryName="cmis:isVersionSeriesCheckedOut" 
+               displayName="Checked Out" 
+               localName="cmis:isVersionSeriesCheckedOut" 
+               propertyDefinitionId="cmis:isVersionSeriesCheckedOut">
+                  <value>false</value>
+              </propertyBoolean>
+              <propertyString queryName="cmis:lastModifiedBy" 
+               displayName="Modified By" 
+               localName="cmis:lastModifiedBy" 
+               propertyDefinitionId="cmis:lastModifiedBy">
+                  <value>system</value>
+              </propertyString>
+              <propertyString queryName="cmis:createdBy" 
+               displayName="Created By" localName="cmis:createdBy" 
+               propertyDefinitionId="cmis:createdBy">
+                  <value>system</value>
+              </propertyString>
+              <propertyString queryName="cmis:checkinComment" 
+               displayName="Checkin Comment" 
+               localName="cmis:checkinComment" 
+               propertyDefinitionId="cmis:checkinComment"/>
+              <propertyId queryName="cmis:objectId" 
+               displayName="Object Id" 
+               localName="cmis:objectId" 
+               propertyDefinitionId="cmis:objectId">
+                  <value>161</value>
+              </propertyId>
+              <propertyBoolean queryName="cmis:isMajorVersion" 
+               displayName="Is Major Version" 
+               localName="cmis:isMajorVersion" 
+               propertyDefinitionId="cmis:isMajorVersion">
+                  <value>true</value>
+              </propertyBoolean>
+              <propertyBoolean queryName="cmis:isImmutable" 
+               displayName="Immutable" localName="cmis:isImmutable" 
+               propertyDefinitionId="cmis:isImmutable">
+                  <value>false</value>
+              </propertyBoolean>
+              <propertyId queryName="cmis:baseTypeId" 
+               displayName="Base-Type-Id" localName="cmis:baseTypeId" 
+               propertyDefinitionId="cmis:baseTypeId">
+                  <value>cmis:document</value>
+              </propertyId>
+              <propertyString queryName="cmis:contentStreamFileName" 
+               displayName="File Name" 
+               localName="cmis:contentStreamFileName" 
+               propertyDefinitionId="cmis:contentStreamFileName">
+                  <value>welcome.txt</value>
+              </propertyString>
+              <propertyDateTime queryName="cmis:lastModificationDate" 
+               displayName="Modification Date" 
+               localName="cmis:lastModificationDate" 
+               propertyDefinitionId="cmis:lastModificationDate">
+                  <value>2012-11-17T19:21:04.169Z</value>
+              </propertyDateTime>
+            </properties>
+            <allowableActions>  //<co id="obj-props-allowable-actions" />
+              <canDeleteObject>true</canDeleteObject>
+              <canUpdateProperties>true</canUpdateProperties>
+              <canGetFolderTree>false</canGetFolderTree>
+              <canGetProperties>true</canGetProperties>
+              <canGetObjectRelationships>false
+               </canGetObjectRelationships>
+              <canGetObjectParents>true</canGetObjectParents>
+              <canGetFolderParent>false</canGetFolderParent>
+              <canGetDescendants>false</canGetDescendants>
+              <canMoveObject>true</canMoveObject>
+              <canDeleteContentStream>true</canDeleteContentStream>
+              <canCheckOut>true</canCheckOut>
+              <canCancelCheckOut>false</canCancelCheckOut>
+              <canCheckIn>false</canCheckIn>
+              <canSetContentStream>false</canSetContentStream>
+              <canGetAllVersions>true</canGetAllVersions>
+              <canAddObjectToFolder>true</canAddObjectToFolder>
+              <canRemoveObjectFromFolder>true
+               </canRemoveObjectFromFolder>
+              <canGetContentStream>true</canGetContentStream>
+              <canApplyPolicy>false</canApplyPolicy>
+              <canGetAppliedPolicies>false</canGetAppliedPolicies>
+              <canRemovePolicy>false</canRemovePolicy>
+              <canGetChildren>false</canGetChildren>
+              <canCreateDocument>false</canCreateDocument>
+              <canCreateFolder>false</canCreateFolder>
+              <canCreateRelationship>false</canCreateRelationship>
+              <canDeleteTree>false</canDeleteTree>
+              <canGetRenditions>false</canGetRenditions>
+              <canGetACL>false</canGetACL>
+              <canApplyACL>false</canApplyACL>
+            </allowableActions>
+            <acl>
+              <permission>
+                  <principal>
+                      <principalId>anyone</principalId>
+                  </principal>
+                  <permission>cmis:all</permission>
+                  <direct>true</direct>
+              </permission>
+            </acl>
+             <policyIds/>
+         </ns2:object>
+     </ns2:getObjectResponse>
+   </S:Body>
+</S:Envelope>
+//<end id="ne-setup"/>

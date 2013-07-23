@@ -1,0 +1,43 @@
+//<start id="ne-setup"/>
+<h1>[name of document]</h1>
+
+[if document has thumbnail]
+  [display thumbnail]
+[end if]
+
+[if document has content]
+  [if current user is allowed to download content]
+    [download link]
+  [end if]
+[end if]
+
+
+<h2>Paths</h2>
+
+<ul>
+[loop over paths]
+  <li>[path]</li>
+[end loop]
+</ul>
+
+
+<h2>Allowable Actions</h2>
+
+<ul>
+[loop over allowable actions]
+  <li>[allowable action]</li>
+[end loop]
+</ul>
+
+
+<h2>Properties</h2>
+
+<table>
+[loop over properties]
+<tr>
+  <td>[property display name]</td>
+  <td>[property value]</td>
+</tr>
+[end loop]
+</table>
+//<end id="ne-setup"/>

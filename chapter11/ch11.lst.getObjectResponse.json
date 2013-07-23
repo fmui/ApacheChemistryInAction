@@ -1,0 +1,75 @@
+//<start id="ne-setup"/>
+{
+    "allowableActions":{  //<co id="json-response-1" />
+        "canGetACL":false,
+        "canGetObjectRelationships":false,
+        "canGetContentStream":true,
+        "canCheckIn":false,
+        "canApplyACL":false,
+        "canRemoveObjectFromFolder":true,
+        "canMoveObject":true,
+        "canDeleteContentStream":true,
+        "canGetProperties":true,
+        "canGetAllVersions":true,
+        "canApplyPolicy":false,
+        "canGetObjectParents":true,
+        "canSetContentStream":false,
+        "canCreateRelationship":false,
+        "canGetFolderTree":false,
+        "canCheckOut":true,
+        "canCreateDocument":false,
+        "canCancelCheckOut":false,
+        "canAddObjectToFolder":true,
+        "canRemovePolicy":false,
+        "canDeleteObject":true,
+        "canGetDescendants":false,
+        "canGetFolderParent":false,
+        "canGetAppliedPolicies":false,
+        "canDeleteTree":false,
+        "canUpdateProperties":true,
+        "canGetRenditions":false,
+        "canCreateFolder":false,
+        "canGetChildren":false
+    },
+    "acl":{  //<co id="json-response-2" />
+        "aces":[
+            {
+                "isDirect":true,
+                "principal":{
+                    "principalId":"anyone"
+                },
+                "permissions":[
+                    "cmis:all"
+                ]
+            }
+        ]
+    },
+    "exactACL":true,
+    "succinctProperties":{   //<co id="json-response-3" />
+        "cmis:isLatestMajorVersion":true,
+        "cmis:contentStreamLength":395,
+        "cmis:contentStreamId":null,
+        "cmis:objectTypeId":"cmisbook:text",
+        "cmis:versionSeriesCheckedOutBy":null,
+        "cmis:versionSeriesCheckedOutId":null,
+        "cmisbook:author":null,
+        "cmis:name":"welcome.txt",
+        "cmis:contentStreamMimeType":"text\/plain",
+        "cmis:versionSeriesId":"162",
+        "cmis:creationDate":1353180064169,
+        "cmis:changeToken":"1353180064169",
+        "cmis:isLatestVersion":true,
+        "cmis:versionLabel":"V 1.0",
+        "cmis:isVersionSeriesCheckedOut":false,
+        "cmis:lastModifiedBy":"system",
+        "cmis:createdBy":"system",
+        "cmis:checkinComment":null,
+        "cmis:objectId":"161",
+        "cmis:isImmutable":false,
+        "cmis:isMajorVersion":true,
+        "cmis:baseTypeId":"cmis:document",
+        "cmis:lastModificationDate":1353180064169,
+        "cmis:contentStreamFileName":"welcome.txt"
+    }
+}
+//<end id="ne-setup"/>

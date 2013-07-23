@@ -1,0 +1,43 @@
+// <start id="ios-listing-04"/>
+CMISSessionParameters *sessionParams = [[CMISSessionParameters alloc]
+  initWithBindingType:CMISBindingTypeAtomPub];//<co id="listing-04-session"/>
+sessionParams.atomPubUrl =
+  [NSURL URLWithString:@"http://localhost:8081/inmemory/atom"];
+sessionParams.repositoryId = @"A1";
+
+[CMISSession connectWithSessionParameters:sessionParams completionBlock://<co id="listing-04-session-params"/>
+  ^(CMISSession *session, NSError *error)
+  {
+    if (nil == session)
+    {
+      // Handle Error
+      if (error) {
+        NSLog(@"Failed to connect session - %@",
+          error.localizedDescription);
+      }
+    }
+    else
+    {
+      self.cmisSession = session;
+
+      // Authentication Success!
+      [self.cmisSession retrieveObjectByPath:@"/blend/Unsorted"
+        completionBlock://<co id="listing-04-by-path"/>
+      ^(CMISObject *object, NSError *error)
+      {
+        if (nil == object)
+        {
+          if (error) {
+            NSLog(
+              @"Failed to retrieve Folder Object by path: %@",
+              error.localizedDescription);
+          }
+        }
+        else
+        {
+          self.uploadFolderId = object.identifier;//<co id="listing-04-store-object-id"/>
+        }
+      }];
+    }
+  }];
+// <end id="ios-listing-04"/>

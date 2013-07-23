@@ -1,0 +1,38 @@
+<resources>
+
+    <color name="purple_dark">#552681</color>
+    <color name="purple_light">#9356CD</color>
+    <color name="yellow_orange">#E3AF1B</color>
+    
+    <style name="list_item_toptext">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+
+    <style name="list_item_bottomtext">
+        <item name="android:gravity">bottom</item>
+        <item name="android:layout_gravity">bottom|center</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+    </style>
+    
+    <style name="CustomWindowTitleBackground">
+        <item name="android:background">@drawable/header</item>
+    </style>
+    
+    <style name="AppTheme.ActionBar" parent="android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@drawable/header</item>
+    </style>
+
+    <style name="AppTheme" parent="android:Theme.Light">
+        <item name="android:windowTitleSize">40dip</item>
+        <item name="android:windowTitleBackgroundStyle">@style/CustomWindowTitleBackground</item>
+    </style>
+
+</resources>

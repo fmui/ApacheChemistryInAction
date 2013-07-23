@@ -1,0 +1,43 @@
+// <start id="ios-listing-03"/>
+void (^listChildrenObjects)(CMISObjectData *objectData,
+  NSError *error) =//<co id="list-children"/>
+    ^(CMISObjectData *objectData, NSError *error)
+    {
+        if (nil == objectData) {
+            // Handle error gracefully
+            return;
+        }
+
+        [self.cmisSession.binding.navigationService//<co id="navigation-service"/>
+         retrieveChildren:objectData.identifier
+         orderBy:nil
+         filter:nil
+         relationships:CMISIncludeRelationshipNone
+         renditionFilter:nil
+         includeAllowableActions:NO
+         includePathSegment:NO
+         skipCount:0
+         maxItems:nil
+         completionBlock:^(CMISObjectList *objectList, NSError *error) {
+             if (nil == objectList) {
+                 // Handle Error state
+                 return;
+             }
+
+             for (CMISObjectData *childObjectData in
+               objectList.objects) {//<co id="childObjectData"/>
+                 // Do something with the children
+             }
+
+         }];
+    };
+
+[self.cmisSession.binding.objectService retrieveObject:folderId// <co id="retrieve-objects"/>
+                                   filter:nil
+    relationships:CMISIncludeRelationshipNone
+    includePolicyIds:NO
+    renditionFilder:nil
+    includeACL:NO
+    includeAllowableActions:NO
+    completionBlock:listChildrenObjects];
+// <end id="ios-listing-03"/>

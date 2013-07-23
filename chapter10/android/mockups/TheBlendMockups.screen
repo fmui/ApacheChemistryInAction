@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" xmlns:o="http://wireframesketcher.com/1.0/model/overrides">
+  <widgets xsi:type="model:Master" id="3" x="192" y="64" measuredWidth="430" measuredHeight="844">
+    <screen xsi:type="model:WidgetGroup" href="../../CMIS%20Book%20%20Music%20Mashup/assets/Android4/Android4.screen#Phone"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="4" x="312" y="631" measuredWidth="184" measuredHeight="39">
+    <screen xsi:type="model:WidgetGroup" href="../../CMIS%20Book%20%20Music%20Mashup/assets/Android4/Android4.screen#Button"/>
+    <overrides>
+      <widgets ref="497" text="Connect"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="5" x="248" y="374" measuredWidth="332" measuredHeight="33">
+    <screen xsi:type="model:WidgetGroup" href="../../CMIS%20Book%20%20Music%20Mashup/assets/Android4/Android4.screen#Text%20Field"/>
+    <overrides>
+      <widgets ref="478" y="9" width="332"/>
+      <widgets ref="479" width="332" text="Enter CMIS binding url "/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="6" x="248" y="452" measuredWidth="332" measuredHeight="33">
+    <screen xsi:type="model:WidgetGroup" href="../../CMIS%20Book%20%20Music%20Mashup/assets/Android4/Android4.screen#Text%20Field"/>
+    <overrides>
+      <widgets ref="478" y="9" width="332"/>
+      <widgets ref="479" width="332" text="Type your username"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="7" x="244" y="535" measuredWidth="340" measuredHeight="33">
+    <screen xsi:type="model:WidgetGroup" href="../../CMIS%20Book%20%20Music%20Mashup/assets/Android4/Android4.screen#Text%20Field"/>
+    <overrides>
+      <widgets ref="478" y="13" width="332"/>
+      <widgets ref="479" x="8" width="332" text="Type your password"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="8" x="347" y="280" measuredWidth="106" measuredHeight="39">
+    <screen xsi:type="model:WidgetGroup" href="../../CMIS%20Book%20%20Music%20Mashup/assets/Android4/Android4.screen#Text%20Size%20Large"/>
+    <overrides>
+      <widgets ref="4" text="The Blend"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="9" x="248" y="346" measuredWidth="30" measuredHeight="33">
+    <screen xsi:type="model:WidgetGroup" href="../../CMIS%20Book%20%20Music%20Mashup/assets/Android4/Android4.screen#Text%20Size%20Medium"/>
+    <overrides>
+      <widgets ref="5" text="Url"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="10" x="248" y="425" measuredWidth="90" measuredHeight="33">
+    <screen xsi:type="model:WidgetGroup" href="../../CMIS%20Book%20%20Music%20Mashup/assets/Android4/Android4.screen#Text%20Size%20Medium"/>
+    <overrides>
+      <widgets ref="5" text="Username"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="11" x="248" y="507" measuredWidth="85" measuredHeight="33">
+    <screen xsi:type="model:WidgetGroup" href="../../CMIS%20Book%20%20Music%20Mashup/assets/Android4/Android4.screen#Text%20Size%20Medium"/>
+    <overrides>
+      <widgets ref="5" text="Password"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="13" x="784" y="80" measuredWidth="430" measuredHeight="844">
+    <screen xsi:type="model:WidgetGroup" href="../../CMIS%20Book%20%20Music%20Mashup/assets/Android4/Android4.screen#Phone"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="15" x="821" y="253" measuredWidth="360" measuredHeight="200">
+    <screen xsi:type="model:WidgetGroup" href="../../CMIS%20Book%20%20Music%20Mashup/assets/Android4/Android4.screen#List%202%20Lines"/>
+    <overrides>
+      <widgetChanges xsi:type="o:Delete" ref="466"/>
+      <widgets ref="467" y="1" text="Album Name\n%(font:15)X Tracks%&#xA;Album Name\n%(font:15)X Tracks%&#xA;Album Name\n%(font:15)X Tracks%">
+        <items ref="@items.0" text="Album Name\n%(font:15)X Tracks%"/>
+        <items ref="@items.1" text="Album Name\n%(font:15)X Tracks%"/>
+        <items ref="@items.2" text="Album Name\n%(font:15)X Tracks%"/>
+      </widgets>
+      <widgets ref="468" y="0"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Image" id="17" x="1524" y="334"/>
+  <widgets xsi:type="model:Master" id="24" x="822" y="211" measuredWidth="360" measuredHeight="46">
+    <screen xsi:type="model:WidgetGroup" href="../../CMIS%20Book%20%20Music%20Mashup/assets/Android4/Android4.screen#Action%20Bar"/>
+    <overrides>
+      <widgetChanges xsi:type="o:Insert" newIndex="6">
+        <object xsi:type="model:Label" x="258" y="8" text="Add Album">
+          <font size="19px"/>
+        </object>
+      </widgetChanges>
+      <widgetChanges xsi:type="o:Delete" ref="693"/>
+      <widgetChanges xsi:type="o:Delete" ref="672"/>
+      <widgetChanges xsi:type="o:Delete" ref="670"/>
+      <widgetChanges xsi:type="o:Delete" ref="690"/>
+      <widgets ref="669" x="10" y="6" text="Album List"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="26" x="229" y="195" measuredWidth="360" measuredHeight="46">
+    <screen xsi:type="model:WidgetGroup" href="../../CMIS%20Book%20%20Music%20Mashup/assets/Android4/Android4.screen#Action%20Bar"/>
+    <overrides>
+      <widgetChanges xsi:type="o:Delete" ref="672"/>
+      <widgetChanges xsi:type="o:Delete" ref="670"/>
+      <widgetChanges xsi:type="o:Delete" ref="690"/>
+      <widgets ref="669" x="4" y="6" text="The Blend : CMIS in action"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="28" x="1360" y="89" measuredWidth="430" measuredHeight="844">
+    <screen xsi:type="model:WidgetGroup" href="../../CMIS%20Book%20%20Music%20Mashup/assets/Android4/Android4.screen#Phone"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="29" x="1397" y="308" measuredWidth="360" measuredHeight="200">
+    <screen xsi:type="model:WidgetGroup" href="../../CMIS%20Book%20%20Music%20Mashup/assets/Android4/Android4.screen#List%202%20Lines"/>
+    <overrides>
+      <widgetChanges xsi:type="o:Delete" ref="466"/>
+      <widgets ref="467" y="1" text="Property Id\n%(font:15)Property Value%&#xA;Property Id\n%(font:15)Property Value%&#xA;Property Id\n%(font:15)Property Value%&#xA;">
+        <items ref="@items.0" text="Property Id\n%(font:15)Property Value%"/>
+        <items ref="@items.1" text="Property Id\n%(font:15)Property Value%"/>
+        <items ref="@items.2" text="Property Id\n%(font:15)Property Value%"/>
+      </widgets>
+      <widgets ref="468" y="0"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="30" x="1397" y="221" measuredWidth="360" measuredHeight="46">
+    <screen xsi:type="model:WidgetGroup" href="../../CMIS%20Book%20%20Music%20Mashup/assets/Android4/Android4.screen#Action%20Bar"/>
+    <overrides>
+      <widgetChanges xsi:type="o:Delete" ref="693"/>
+      <widgetChanges xsi:type="o:Delete" ref="672"/>
+      <widgetChanges xsi:type="o:Delete" ref="670"/>
+      <widgetChanges xsi:type="o:Delete" ref="690"/>
+      <widgets ref="669" x="10" y="6" text="Album Details"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="31" x="1397" y="265" measuredWidth="360" measuredHeight="48">
+    <screen xsi:type="model:WidgetGroup" href="../../CMIS%20Book%20%20Music%20Mashup/assets/Android4/Android4.screen#Tabs"/>
+    <overrides>
+      <widgets ref="9" text="Properties, Tracks">
+        <items ref="@items.0" text="Properties"/>
+        <items ref="@items.1" text="Tracks"/>
+        <itemChanges xsi:type="o:Delete" ref="@items.2"/>
+      </widgets>
+    </overrides>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

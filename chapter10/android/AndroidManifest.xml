@@ -1,0 +1,50 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.manning.cmis.theblend.android"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <!-- SDK : Android OpenCMIS Client must use a minSDKVersion = 9  (Android GingerBread) or above -->
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="16" />
+
+    <!-- PERMISSIONS : Android OpenCMIS Client must have access to Internet to retrieve information and write external storage to save downloaded document. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <!-- FIRST SAMPLE OF ACTIVITY -->
+        <activity android:name=".FirstOpenCMISActivity" />
+
+        <!-- THE BLEND : LOGIN SCREEN -->
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- THE BLEND : ALBUMS SCREEN -->
+        <activity
+            android:name=".albums.AlbumsActivity"
+            android:label="@string/title_album" />
+
+        <!-- THE BLEND : ALBUM DETAILS SCREEN -->
+        <activity
+            android:name=".albums.AlbumDetailsActivity"
+            android:label="@string/title_details" />
+
+        <!-- THE BLEND : PROPERTIES SCREEN -->
+        <activity
+            android:name=".properties.PropertyActivity"
+            android:label="@string/title_activity_main" />
+    </application>
+
+</manifest>

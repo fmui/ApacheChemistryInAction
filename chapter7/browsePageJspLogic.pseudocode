@@ -1,0 +1,29 @@
+//<start id="ne-setup"/>
+<h1>[name of the folder]</h1>
+
+Path: [path of the folder]<br>
+Number of children: [total number of children]<br>
+
+<table>
+
+[if folder has a parent folder]
+<tr>
+  <td>[link to parent folder]</td>
+  <td></td>
+  <td></td>
+<tr>
+[end if]
+
+[loop over children]
+<tr>
+  <td>[name and link to the child]</td>
+  <td>[if child is a document][MIME type][end if]</td>
+  <td>[if child is a document][content size][end if]</td>
+<tr>
+[end loop]
+
+</table>
+
+[if there is a previous page][link to the previous page][end if]
+[if there is a next page][link to the next page][end if]
+//<end id="ne-setup"/>

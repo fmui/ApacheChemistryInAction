@@ -1,0 +1,15 @@
+<resources>
+    
+    
+     <style name="TheBlendTheme.ActionBar" parent="android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@drawable/header</item>
+        <item name="android:titleTextStyle">@style/TheBlendTheme.ActionBar.TitleTextStyle</item>
+        <item name="android:displayOptions">showTitle</item>
+        <item name="android:itemBackground">@drawable/header</item>
+    </style>
+    
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/TheBlendTheme.ActionBar</item>
+    </style>
+    
+</resources>

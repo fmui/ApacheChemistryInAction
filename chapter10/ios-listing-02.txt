@@ -1,0 +1,28 @@
+// <start id="ios-listing-02"/>
+NSString *folderId = <some folder ObjectId>
+
+[self.cmisSession retrieveObject:folderId completionBlock://<co id="retrieveObject"/>
+  ^(CMISObject *object, NSError *error)
+  {
+    if (nil == object) {
+      // Handle Error
+    }
+    else {
+      // Folder successfully retrieved, do something
+      CMISFolder *aFolder = (CMISFolder *)object;//<co id="get-folder"/>
+      [aFolder retrieveChildrenWithCompletionBlock:
+      ^(CMISPagedResult *result, NSError *error)
+      {
+        if (nil == result) {
+          // Handle error
+        }
+        else {
+          for (CMISObject *childObject in result.resultArray)//<co id="iterate-results"/>
+            {
+              // retrieveChildren completion block
+            }
+      }
+    }];
+  }
+}];
+// <end id="ios-listing-02"/>

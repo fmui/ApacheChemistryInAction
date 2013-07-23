@@ -1,0 +1,376 @@
+<?php
+/*
+ * Created on May 25, 2008
+ *
+ * To change the template for this generated file go to
+ * Window - Preferences - PHPeclipse - PHP - Code Templates
+ */
+/*
+Functionality
+* Search based on......
+*  TAGS
+*  Audio
+*   Artist
+*   Title
+*   Genre
+*   Mono/Stereo
+*  Video
+*   Length
+*  Images
+* Tagging of Assets
+* Creating Play Lists and Galleries
+*/
+libraries_load("cmis-lib");
+require_once(libraries_get_path("cmis-lib") . "/cmis-lib.php");
+function theblend_get_cmis_client() {
+	static $client=null;
+	global $user;
+	if ($client == null) {
+		$session_info = array("username" => $user->name, "password" => "password");
+		$client = new CMISService("http://localhost:8081/inmemory/atom",$session_info["username"],$session_info["password"]);		
+	}
+	return $client;
+}
+function theblend_index() {
+	global $user;
+	if (!isset($user->name)) {
+		drupal_goto("user");
+	}
+	$client = theblend_get_cmis_client();
+	$query = "SELECT * FROM cmisbook:taggable";
+	$objs = $client->query($query);
+	$output = "<div style='float:left;border-style:solid;border-width:1px;border-color:black'><h2>List of All Taggable Objects</h2>";
+	$output .= "<ul>";
+	foreach ($objs->objectList as $obj) {
+		$output .= "<li>" . $obj->properties['cmis:name'] . "</li>";
+	}
+	$output .= "</ul>";
+	$output .= "</div>";
+	$output .= "<div style='float:left;border-style:solid;border-width:1px;border-color:black'>";
+	$output .= "<h2>List of All Collections</h2>";
+	$collections_folder = theblend_get_collections_folder();
+	$collections_query = "SELECT cmis:objectId,cmis:name FROM cmis:folder WHERE IN_FOLDER('"  . $collections_folder->id  .   "')";
+	$collections = $client->query($collections_query);
+	$output .= "<ul>";
+	foreach ($collections->objectList as $obj) {
+		$output .= "<li>" . l($obj->properties['cmis:name'],"theblend/collection/view/".$obj->properties['cmis:name']) . "</li>";
+	}
+	$output .= "</ul>";
+	
+	$output .= "<h2>List of All Tags</h2>";
+	$tagged_query = "SELECT cmis:objectId FROM cmisbook:taggable WHERE cmisbook:tags IS NOT NULL";
+	$taggged = $client->query($tagged_query);
+	$output .= "<ul>";
+	$utags=array();
+	foreach ($taggged->objectList as $obj) {
+		$item = $client->getObject($obj->properties['cmis:objectId']);
+		$tags = $client->getMultiValuedProp($item, 'cmisbook:tags');
+		foreach ($tags as $tag) {
+			$utags[$tag] = $tag;
+		}
+	}
+	foreach ($utags as $tag) {
+		$output .= "<li>" . l($tag,"theblend/tag/".$tag) . "</li>";
+	}
+	$output .= "</ul>";
+	$output .= "</div>";
+	$output .= "<div style='float:left;border-style:solid;border-width:1px;border-color:black'><h2>The Blend Menu</h2>";
+	$output .= "<ul>";
+	$output .= "<li>" . l("Create Collection","theblend/collection") . "</li>";
+	$output .= "<li>" . l("Add Item to Collection","theblend/collection/additem") . "</li>";
+	$output .= "<li>" . l("Tag Item","theblend/tagitem") . "</li>";
+	$output .= "</ul>";	
+	$output .= "</div>";
+	$output .= "<br style='clear:both' />";
+	return $output;
+}
+
+function theblend_menu() {
+	$items['theblend/index'] = array (
+		'title' => "The Blend Dashboard",
+	    'description' => 'Dashboard page for the Blend',
+	    'page callback' => 'theblend_index',
+	    'access callback' => TRUE,
+	    'type' => MENU_CALLBACK,
+	    'weight' => -10,
+	);
+	$items['theblend/tag/%'] = array (
+		'title' => "The Blend List of Songs with Tag",
+	    'description' => 'Catagory for the Blend',
+	    'page arguments' => array(2),
+	    'page callback' => 'theblend_list_items_with_tag',
+	    'access callback' => TRUE,
+	    'type' => MENU_CALLBACK,
+	    'weight' => -2,
+	);
+	$items['theblend/tagitem'] = array (
+		'title' => "The Blend Add Tag",
+	    'description' => 'Categorize Item',
+		'page arguments' => array('theblend_add_tag_to_item_form'),
+		'page callback' => 'drupal_get_form',
+	    'access callback' => TRUE,
+	    'type' => MENU_CALLBACK,
+	    'weight' => -2,
+	);
+	$items['theblend/collection'] = array (
+		'title' => "The Blend Create Collection",
+		'description' => "Create a new Collection",
+		'page arguments' => array('theblend_create_collection_form'),
+		'page callback' => 'drupal_get_form',
+	    'access callback' => TRUE,
+		'type' => MENU_CALLBACK,
+		'weight' => 5,
+	);
+	$items['theblend/collection/additem'] = array (
+		'title' => "The Blend Add Item to Collection",
+		'description' => "Add Item to Collection",
+		'page arguments' => array('theblend_add_item_to_collection_form'),
+		'page callback' => 'drupal_get_form',
+	    'access callback' => TRUE,
+		'type' => MENU_CALLBACK,
+		'weight' => 5,
+	);
+	$items['theblend/collection/view/%'] = array (
+		'title' => "The Blend List Collection Contents",
+		'description' => "List Collection Contents",
+	    'page arguments' => array(3),
+	    'page callback' => 'theblend_list_items_in_collection',
+	    'access callback' => TRUE,
+		'type' => MENU_CALLBACK,
+		'weight' => 5,
+	);
+	return $items;
+}
+function theblend_add_item_to_collection_form_submit($form, &$form_state) {
+	$collection_name = $form_state['values']['collection_name'];
+	$taggable_item = $form_state['values']['taggable_item'];
+	theblend_add_item_to_collection($taggable_item,$collection_name);
+	drupal_set_message("Item Added to Collection");
+	drupal_goto("theblend/index");
+}
+function theblend_add_item_to_collection_form($form,&$form_state) {
+	//SELECT cmis:objectId,cmis:name,cmis:objectTypeId FROM cmisbook:taggable
+	//SELECT cmis:objectId,cmis:name FROM cmis:folder WHERE IN_FOLDER('314')
+	$client = theblend_get_cmis_client();
+	$collections_folder = theblend_get_collections_folder();
+	$collections_query = "SELECT cmis:objectId,cmis:name FROM cmis:folder WHERE IN_FOLDER('"  . $collections_folder->id  .   "')";
+	$collections = $client->query($collections_query);
+	$collections_select = array();
+	foreach ($collections->objectList as $obj) {
+		$collections_select[$obj->properties['cmis:name']] = $obj->properties['cmis:name'];
+	}
+	$taggables_query = "SELECT cmis:objectId,cmis:name,cmis:objectTypeId FROM cmisbook:taggable";
+	$taggables = $client->query($taggables_query);
+	$taggables_select = array();
+	foreach ($taggables->objectList as $obj) {
+		$taggables_select[$obj->properties['cmis:objectId']] = $obj->properties['cmis:name'] . " ( " . $obj->properties['cmis:objectTypeId'] .")";
+	}
+	
+  	$form['collection_name'] = array(
+	    '#type' => 'select',
+	    '#title' => t('Collection Name'),
+	    '#description' => "Please Select the Collection",
+	    '#required' => TRUE,
+	    '#options' => $collections_select,
+  	);
+  	$form['taggable_item'] = array(
+	    '#type' => 'select',
+	    '#title' => t('Item To Add to Collection'),
+	    '#description' => "Please Select the Taggable Item",
+	    '#required' => TRUE,
+	    '#options' => $taggables_select,
+	);
+    $form['submit'] = array(
+    	'#type' => 'submit',
+    	'#value' => 'Submit',
+    );
+	return $form;	
+}
+function theblend_create_collection_form_submit($form, &$form_state) {
+	$collection_name = $form_state['values']['collection_name'];
+	theblend_create_collection($collection_name);
+	drupal_set_message("Collection Created");
+	drupal_goto("theblend/index");
+}
+function theblend_create_collection_form($form, &$form_state) {
+	$form['collection_name'] = array(
+	    '#type' => 'textfield',
+	    '#title' => t('Collection name'),
+	    '#required' => TRUE,
+	    '#description' => "Please enter your Collection name.",
+    );
+    $form['submit'] = array(
+    	'#type' => 'submit',
+    	'#value' => 'Submit',
+    );
+	return $form;
+}
+function theblend_save_query($query_name,$query) {
+	$query_folder = theblend_get_queries_folder();
+	$query_obejct = $client->getObejectByPath($query_folder->properties["cmis:path"] . "/" . $query_name . ".sql");
+}
+function theblend_run_query($query_name) {
+	return $client->query(theblend_get_query($query_name));
+}
+function theblend_get_queries_folder() {
+	$client = theblend_get_cmis_client();
+	$user_content = $client->getObjectByPath("/user_content");
+	try {
+		$my_content = $client->getObjectByPath("/user_content/" . $client->username);		
+	} catch (Exception $exception) {
+		$my_content = $client->createFolder($user_content->id,$client->username);
+	}
+	try {
+		$my_queries = $client->getObjectByPath("/user_content/" . $client->username . "/queries");		
+	} catch (Exception $exception) {
+		$my_queries = $client->createFolder($my_content->id,"queries");		
+	}
+	return $my_queries;
+}
+function theblend_get_collections_folder() {
+	$client = theblend_get_cmis_client();
+	$user_content = $client->getObjectByPath("/user_content");
+	try {
+		$my_content = $client->getObjectByPath("/user_content/" . $client->username);		
+	} catch (Exception $exception) {
+		$my_content = $client->createFolder($user_content->id,$client->username);
+	}
+	try {
+		$my_collections = $client->getObjectByPath("/user_content/" . $client->username . "/collections");		
+	} catch (Exception $exception) {
+		$my_collections = $client->createFolder($my_content->id,"collections");		
+	}
+	return $my_collections;
+}
+
+function theblend_get_query($query_name) {
+	$client = theblend_get_cmis_client();
+	$my_queries = theblend_get_queries_folder();
+	$my_query = false;
+	try {
+		$my_query = $client->getObjectByPath("/user_content/" . $client->username . "/queries/" . $query_name);		
+	} catch (Exception $exception) {
+		return "";
+	}	
+	return $client->getContentStream($my_query->id);
+}
+
+function theblend_get_collection($collection_name,$create=false) {
+	$client = theblend_get_cmis_client();
+	$my_collections = theblend_get_collections_folder();
+	$my_collection = false;
+	try {
+		$my_collection = $client->getObjectByPath("/user_content/" . $client->username . "/collections/" . $collection_name);		
+	} catch (Exception $exception) {
+		if ($create) {
+			drupal_set_message("creating my collection");
+			$my_collection = $client->createFolder($my_collections->id,$collection_name);
+		}
+	}	
+	return $my_collection;	
+}
+function theblend_create_collection($collection_name) {
+	theblend_get_collection($collection_name,true);
+	//TODO:
+	/*
+	 * Notice: Undefined index: cmis:folder in CMISService->getPropertyType() 
+	 *    (line 93 of /home/richmck/alfresco/projects/CMISBook/TheBlend/libraries/cmis-lib/cmis/cmis_service.php).
+	 * Notice: Trying to get property of non-object in CMISService->getPropertyType() 
+	 *    (line 93 of /home/richmck/alfresco/projects/CMISBook/TheBlend/libraries/cmis-lib/cmis/cmis_service.php).
+	 * Notice: Undefined variable: children_feed_l in CMISRepositoryWrapper::extractTypeDefFromNode() 
+	 *    (line 472 of /home/richmck/alfresco/projects/CMISBook/TheBlend/libraries/cmis-lib/cmis/cmis_repository_wrapper.php).
+	 */
+}
+
+function theblend_add_item_to_collection($objectId,$collection_name) {
+	$client = theblend_get_cmis_client();
+	$collection=theblend_get_collection($collection_name);
+	$client->addObjectToFolder($objectId,$collection->id);	
+}
+
+function theblend_view_collection($collection_name) {
+	$client = theblend_get_cmis_client();
+	$collection=theblend_get_collection($collection_name);
+	return $client->getChildren($collection->id);
+}
+function theblend_add_tag_to_item_form($form,&$form_state) {
+	//SELECT cmis:objectId,cmis:name,cmis:objectTypeId FROM cmisbook:taggable
+	//SELECT cmis:objectId,cmis:name FROM cmis:folder WHERE IN_FOLDER('314')
+	$client = theblend_get_cmis_client();
+	$taggables_query = "SELECT cmis:objectId,cmis:name,cmis:objectTypeId FROM cmisbook:taggable";
+	$taggables = $client->query($taggables_query);
+	$taggables_select = array();
+	foreach ($taggables->objectList as $obj) {
+		$taggables_select[$obj->properties['cmis:objectId']] = $obj->properties['cmis:name'] . " ( " . $obj->properties['cmis:objectTypeId'] .")";
+	}
+	
+  	$form['taggable_item'] = array(
+	    '#type' => 'select',
+	    '#title' => t('Item To Add to Collection'),
+	    '#description' => "Please Select the Taggable Item",
+	    '#required' => TRUE,
+	    '#options' => $taggables_select,
+	);
+  	$form['tag_name'] = array(
+	    '#type' => 'textfield',
+	    '#title' => t('Tag'),
+	    '#description' => "Please Enter Tag",
+	    '#required' => TRUE,
+  	);
+    $form['submit'] = array(
+    	'#type' => 'submit',
+    	'#value' => 'Submit',
+    );
+	return $form;	
+}
+
+function theblend_add_tag_to_item_form_submit($form, &$form_state) {
+	$tag_name = $form_state['values']['tag_name'];
+	$taggable_item = $form_state['values']['taggable_item'];
+	theblend_add_tag_to_item($taggable_item,$tag_name);
+	drupal_set_message("Item Tagged");
+	drupal_goto("theblend/index");
+}
+function theblend_add_tag_to_item($objectId,$tag_name) {
+	//TODO: Add Retrying logic in the event that the update fails due to a change token problem
+    /* TOTO: Fix this
+     * Notice: Undefined index: cmisbook:audio in CMISService->getPropertyType() (line 93 of /home/richmck/alfresco/projects/CMISBook/TheBlend/libraries/cmis-lib/cmis/cmis_service.php).
+Notice: Trying to get property of non-object in CMISService->getPropertyType() (line 93 of /home/richmck/alfresco/projects/CMISBook/TheBlend/libraries/cmis-lib/cmis/cmis_service.php).
+Notice: Undefined variable: children_feed_l in CMISRepositoryWrapper::extractTypeDefFromNode() (line 472 of /home/richmck/alfresco/projects/CMISBook/TheBlend/libraries/cmis-lib/cmis/cmis_repository_wrapper.php).
+CmisConstraintException: <html><head><title>Apache Chemistry OpenCMIS - constraint error</title><style><!--H1 {font-size:24px;line-height:normal;font-weight:bold;background-color:#f0f0f0;color:#003366;border-bottom:1px solid #3c78b5;padding:2px;} BODY {font-family:Verdana,arial,sans-serif;color:black;font-size:14px;} HR {color:#3c78b5;height:1px;}--></style></head><body><h1>HTTP Status 409 - <!--exception-->constraint<!--/exception--></h1><p><!--message-->updateProperties failed, following property can't be updated, because it is not writable: cmis:changeToken<!--/message--></p><hr noshade='noshade'/><!--stacktrace--><pre> org.apache.chemistry.opencmis.commons.exceptions.CmisConstraintException: updateProperties failed, following property can't be updated, because it is not writable: cmis:changeToken at org.apache.chemistry.opencmis.inmemory.server.InMemoryObjectServiceImpl.updateProperties(InMemoryObjectServiceImpl.java:626) at org.apache.chemistry.opencmis.inmemory.server.InMemoryService.updateProperties(InMemoryService.java:296) at org.apache.chemistry.opencmis.server.impl.atompub.ObjectService.updateProperties(ObjectService.java:465) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) at java.lang.reflect.Method.invoke(Unknown Source) at org.apache.chemistry.opencmis.server.shared.Dispatcher.dispatch(Dispatcher.java:94) at org.apache.chemistry.opencmis.server.impl.atompub.CmisAtomPubServlet.dispatch(CmisAtomPubServlet.java:234) at org.apache.chemistry.opencmis.server.impl.atompub.CmisAtomPubServlet.service(CmisAtomPubServlet.java:183) at javax.servlet.http.HttpServlet.service(HttpServlet.java:722) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210) at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:225) at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:123) at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:472) at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:168) at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:98) at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118) at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:407) at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1001) at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:585) at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:310) at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source) at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) at java.lang.Thread.run(Unknown Source) </pre><!--/stacktrace--><hr noshade='noshade'/></body></html> in CMISRepositoryWrapper->convertStatusCode() (line 112 of /home/richmck/alfresco/projects/CMISBook/TheBlend/libraries/cmis-lib/cmis/cmis_repository_wrapper.php).
+     */
+	$client = theblend_get_cmis_client();
+	$item = $client->getObject($objectId);
+	$tags = $client->getMultiValuedProp($item, 'cmisbook:tags');
+	$properties = array('cmisbook:tags' => $tags);
+	$properties['cmisbook:tags'][] = $tag_name;
+	$client->updateProperties($objectId,$properties);
+}
+
+function theblend_list_items_in_collection($collection_name) {
+	$client = theblend_get_cmis_client();
+	$collection_folder = theblend_get_collection($collection_name);
+	$query = "SELECT * FROM cmisbook:taggable AS t WHERE IN_FOLDER('" . $collection_folder->id . "')";
+	$objs = $client->query($query);
+	$output = "<h2>Items in the " . $collection_name . " Collection</h2>";
+	$output .= "<h6>$query</h6>";
+	$output .= "<ul>";
+	foreach ($objs->objectList as $obj) {
+		$output .= "<li>" . $obj->properties['cmis:name'] . "</li>";
+	}
+	$output .= "</ul>";
+	return $output;
+}
+function theblend_list_items_with_tag($tag_name) {
+	$client = theblend_get_cmis_client();
+	$query = "SELECT * FROM cmisbook:taggable AS t WHERE '" . $tag_name . "' = ANY t.cmisbook:tags";
+	$objs = $client->query($query);
+	$output = "<h2>Items Tagged with " . $tag_name . "</h2>";
+	$output .= "<h6>$query</h6>";
+	$output .= "<ul>";
+	foreach ($objs->objectList as $obj) {
+		$output .= "<li>" . $obj->properties['cmis:name'] . "</li>";
+	}
+	$output .= "</ul>";
+	return $output;
+}

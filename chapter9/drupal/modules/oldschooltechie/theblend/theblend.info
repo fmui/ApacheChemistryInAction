@@ -1,0 +1,7 @@
+; $Id$
+name = theblend
+description = The Blend Demonstration Portal for CMIS Book
+package = CMISBook
+core = 7.x
+version = 7.x-1.0
+dependencies[] = cmis_library

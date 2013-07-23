@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>OpenCMIS Browser Binding</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>	
+	<script src="cmis.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<iframe id="createresultframe" name="createresultframe" style="width:0px;height:0px;visibility:hidden" onload="createDocumentDone()">
+ 	</iframe>
+    <h3> Create a document from an HTML form: </h3>
+    <form id="createdochtmlid" action="" target="createresultframe" enctype="multipart/form-data" onsubmit="prepareCreate()" method="post">
+	   <fieldset>
+	    <legend>Create document HTML</legend>
+	    <table>
+	      <tr>
+	        <td><label for="name">Name:</label></td>
+	        <td><input name="propertyValue[0]" type="text" id="name" value="My Document"/></td>
+	      </tr>
+	      <tr>
+	        <td><label for="typeId">Type-Id:</label></td>
+            <td><input name="propertyValue[1]" type="text" id="typeId" value="cmis:document"/></td>
+	      </tr>
+	      <tr>
+	        <td><label for="folderId">Folder-Id:</label></td>
+	        <td><input type="text" id="folderId" name="objectId" value="100"/></td>
+	      </tr>
+	      <tr>
+	        <td><label for="contentId">Content:</label></td>
+	        <td><input id="contentId" name="Browse..." type="file" size="50"/></td>
+	      </tr>
+	      <tr>
+	      <td><input id="createdochtml" type="submit" value="Create Doc!"/></td>
+	      <td></td>
+	      </tr>       
+	    </table>	    
+	   </fieldset>
+	   <input name="propertyId[0]" type="hidden" value="cmis:name" />
+       <input name="propertyId[1]" type="hidden" value="cmis:objectTypeId" />
+       <input name="cmisaction" type="hidden" value="createDocument" />
+       <input id="transactionId" name="token" type="hidden" value="" />         
+	</form>
+	<p></p>
+    <div id="createdocsection">
+    </div>   
+    
+</body>
+</html>

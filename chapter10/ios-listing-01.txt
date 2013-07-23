@@ -1,0 +1,27 @@
+// <start id="ios-listing-01"/>
+CMISSessionParameters *sessionParams = [[CMISSessionParameters alloc]
+  initWithBindingType:CMISBindingTypeAtomPub];//<co id="listing-01-session-params" />
+sessionParams.atomPubUrl =
+  [NSURL URLWithString:@"http://localhost:8080/service/atom"];
+sessionParams.username = @"bogusUser";
+sessionParams.password = @"bogusPassword";
+sessionParams.repositoryId = @"repo1";
+
+[CMISSession connectWithSessionParameters:sessionParams completionBlock://<co id="listing-01-connect-with-params" />
+ 
+     ^(CMISSession *session, NSError *error)
+     {
+         if (nil == session)
+         {
+             // Error during authentication, handle gracefully
+             if (error) {
+                 NSLog(@"Failed to connect the session");
+             }
+         }
+         else
+         {
+             // CMIS Session successfully connected
+             self.cmisSession = session;//<co id="listing-01-successfully-connected" />
+         }
+     }];
+// <end id="ios-listing-01"/>
