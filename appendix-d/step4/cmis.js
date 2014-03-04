@@ -122,7 +122,7 @@ function createTable(children, baseType, responseSection) {
 							props["cmis:contentStreamFileName"].value != null) {
 						text = "<a href='" + baseUrl + "/root?cmisselector=content&objectId=" + props["cmis:objectId"].value + "' target='_new' >" + text + "</a>";
 					} else if (baseType == "cmis:folder" && propsToDisplay[propKey] == "cmis:name") {
-						text = $('<a>').attr("href", "javascript:drillDownChildren(" + props["cmis:objectId"].value + ")").html(text);
+						text = $('<a>').attr("href", "javascript:drillDownChildren(\"" + props["cmis:objectId"].value + "\")").html(text);
 					}
 					row.append($('<td>').html(text));
 				} else
